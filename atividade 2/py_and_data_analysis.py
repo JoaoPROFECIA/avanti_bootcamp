@@ -7,9 +7,9 @@
 # variável numeros
 numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+
 # QUESTÃO 1
 # Função para retornar números ímpares de uma lista de números
-
 
 def odd_numbers(numbers):
     return [number for number in numbers if number % 2 != 0]
@@ -25,9 +25,9 @@ questions_and_answers_1 = {
         "    return [number for number in numbers if number % 2 != 0]"
 }
 
+
 # QUESTÃO 2
 # Função para retornar números únicos de uma lista de números
-
 
 def unique_numbers(numbers):
     return list(set(numbers))
@@ -47,7 +47,7 @@ resposta_2 = {
 
 
 # QUESTÃO 3
-
+# Função para retornar elementos presentes em apenas uma das listas
 
 def elements_in_one_list_only(list1, list2):
     return list(set(list1) ^ set(list2))
@@ -73,7 +73,7 @@ resposta_3 = {
 
 
 # QUESTÃO 4
-
+# Função para retornar o segundo maior valor de uma lista de números
 
 def segundo_maior_valor(lista_de_numeros):
     lista_ordenada = sorted(lista_de_numeros, reverse=True)
@@ -95,7 +95,7 @@ resposta_4 = {
 
 
 # QUESTÃO 5
-
+# Função para ordenar uma lista de tuplas pelo nome das pessoas
 
 def ordenar_por_nome(lista_de_pessoas):
     return sorted(lista_de_pessoas, key=lambda pessoa: pessoa[0])
@@ -118,7 +118,6 @@ resposta_5 = {
 
 
 # Função para exibir perguntas e respostas
-
 
 def display_questions_and_answers():
     print("Numeros utilizados:", numeros)
@@ -173,6 +172,5 @@ def display_questions_and_answers():
 
 
 # Chamada da função para exibir perguntas e respostas
-
 
 display_questions_and_answers()
