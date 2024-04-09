@@ -1,176 +1,119 @@
-# Python and data analysis
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
-# Algoritmos básicos de programação em linguagem python e
-# visualização e análise de dados
+class QuestoesBasicas:
+    # Inicializa a lista de números
+    def __init__(self):
+        self.numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-# Numeros utilizados para as questões são predefinidos e armazenados na
-# variável numeros
-numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    # QUESTÃO 1
+    def questao_1(self):
+        return [number for number in self.numeros if number % 2 != 0]
 
+    # QUESTÃO 2
+    def questao_2(self):
+        return [number for number in self.numeros if self.is_prime(number)]
 
-# QUESTÃO 1
-# Função para retornar números ímpares de uma lista de números
+    # Função auxiliar para verificar se um número é primo
+    def is_prime(self, number):
+        if number <= 1:
+            return False
+        if number == 2:
+            return True
+        if number % 2 == 0:
+            return False
+        for i in range(3, int(number**0.5) + 1, 2):
+            if number % i == 0:
+                return False
+        return True
+    
+    # QUESTÃO 3
+    def questao_3(self):
+        return list(set(self.numeros) ^ set([2, 5, 6, 9, 10]))
 
-def odd_numbers(numbers):
-    return [number for number in numbers if number % 2 != 0]
+    # QUESTÃO 4
+    def questao_4(self):
+        # Verifica se a lista tem pelo menos dois elementos
+        if len(self.numeros) < 2:
+            return "A lista precisa ter pelo menos dois elementos."
+        maior = max(self.numeros)
 
+        # Inicializa o segundo maior valor como negativo infinito
+        segundo_maior = float('-inf')
 
-# Chamando a função odd_numbers para obter o resultado
-resultado_odd_numbers = odd_numbers(numeros)
+        for numero in self.numeros:
+            # Atualiza o segundo maior valor se encontrarmos um valor menor do
+            # que o maior e maior do que o segundo maior
+            if numero != maior and numero > segundo_maior:
+                segundo_maior = numero
 
-questions_and_answers_1 = {
-    "1. Escreva uma função que receba uma lista de números e retorne outra"
-    "lista com os números ímpares.":
-        "def odd_numbers(numbers):\n"
-        "    return [number for number in numbers if number % 2 != 0]"
-}
+        # Verifica se encontramos um segundo maior valor válido
+        if segundo_maior == float('-inf'):
+            return "Não há segundo maior valor na lista."
 
+        return segundo_maior
 
-# QUESTÃO 2
-# Função para retornar números únicos de uma lista de números
-
-def unique_numbers(numbers):
-    return list(set(numbers))
-
-
-questions_and_answers_2 = {
-    "2. Escreva uma função que receba uma lista de números e retorne outra "
-    "lista com números presentes.":
-        "def unique_numbers(numbers):\n"
-        "    return list(set(numbers))",
-}
-resposta_2 = {
-    "resposta_2": {
-        "unique_numbers_function": unique_numbers(numeros)
-    }
-}
-
-
-# QUESTÃO 3
-# Função para retornar elementos presentes em apenas uma das listas
-
-def elements_in_one_list_only(list1, list2):
-    return list(set(list1) ^ set(list2))
-
-
-questions_and_answers_3 = {
-    "3. Escreva uma função que receba duas listas e retorne outra lista com os"
-    "elementos presentes em apenas uma das listas.":
-        "def elements_in_one_list_only(list1, list2):\n"
-        "    return list(set(list1) ^ set(list2))",
-}
-
-resultado_elements_in_one_list_only = elements_in_one_list_only(
-    numeros, [2, 4, 6, 8, 10]
-    )
-
-resposta_3 = {
-    "resposta_3": {
-        "elements_in_one_list_only_function":
-            resultado_elements_in_one_list_only
-    }
-}
+    # QUESTÃO 5
+    def questao_5(self):
+        return sorted([("João", 20), ("Maria", 30), ("Ana", 25), ("Pedro", 27)])
 
 
-# QUESTÃO 4
-# Função para retornar o segundo maior valor de uma lista de números
+class VisualizacaoDados:
+    def questao_6(self):
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-def segundo_maior_valor(lista_de_numeros):
-    lista_ordenada = sorted(lista_de_numeros, reverse=True)
-    return lista_ordenada[1]
+        fig, axs = plt.subplots(ncols=2, nrows=2, figsize=(5.5, 3.5), 
+                                constrained_layout=True)
 
+        for row in range(2):
+            for col in range(2):
+                axs[row, col].annotate(f'axs[{row}, {col}]', (0.5, 0.5),
+                                       transform=axs[row, col].transAxes,
+                                       ha='center', va='center', fontsize=18,
+                                       color='darkgrey')
 
-questions_and_answers_4 = {
-    "4. Dada uma lista de números inteiros, escreva uma função para encontrar"
-    "o segundo maior valor na lista.":
-        "def segundo_maior_valor(lista_de_numeros):\n"
-        "    lista_ordenada = sorted(lista_de_numeros, reverse=True)\n"
-        "    return lista_ordenada[1]",
-}
-resposta_4 = {
-    "resposta_4": {
-        "segundo_maior_valor_function": segundo_maior_valor(numeros)
-    }
-}
+        fig.suptitle('plt.subplots()')
+        plt.show()
 
+    def questao_7(self):
+        import numpy as np
+        import matplotlib as mpl
+        import matplotlib.pyplot as plt
 
-# QUESTÃO 5
-# Função para ordenar uma lista de tuplas pelo nome das pessoas
+        x = np.linspace(-2 * np.pi, 2 * np.pi, 100)
+        y = np.sin(x)
+        fig, ax = plt.subplots()
+        ax.plot(x, y)
+        plt.show()
 
-def ordenar_por_nome(lista_de_pessoas):
-    return sorted(lista_de_pessoas, key=lambda pessoa: pessoa[0])
+    def questao_8(self):
+        df = pd.read_csv('arquivo.csv')
+        print(df.head())
 
+    def questao_9(self):
+        df = pd.read_csv('arquivo.csv')
+        coluna = df['coluna']
+        filtro = df['coluna'] > 10
+        print(df[filtro])
 
-questions_and_answers_5 = {
-    "5. Crie uma função que receba uma lista de tuplas, cada uma contendo o"
-    "nome e a idade de uma pessoa, e retorne a lista ordenada pelo nome das"
-    "pessoas em ordem alfabética.":
-        "def ordenar_por_nome(lista_de_pessoas):\n"
-        "    return sorted(lista_de_pessoas, key=lambda pessoa: pessoa[0])",
-}
-resposta_5 = {
-    "resposta_5": {
-        "ordenar_por_nome_function": ordenar_por_nome(
-            [("João", 20), ("Maria", 30), ("Ana", 25)]
-            )
-    }
-}
+    def questao_10(self):
+        df = pd.read_csv('arquivo.csv')
+        df.fillna(0, inplace=True)
+        print(df)
 
+# Teste das questões
+questoes_basicas = QuestoesBasicas()
+visualizacao_dados = VisualizacaoDados()
 
-# Função para exibir perguntas e respostas
+print("Questões Básicas:")
+print(questoes_basicas.questao_1())
+print(questoes_basicas.questao_2())
+print(questoes_basicas.questao_3())
+print(questoes_basicas.questao_4())
+print(questoes_basicas.questao_5())
 
-def display_questions_and_answers():
-    print("Numeros utilizados:", numeros)
-    print()
-    for question, answer in questions_and_answers_1.items():
-        print(question)
-        print(answer)
-        print("Resposta 1:",
-              resultado_odd_numbers
-              )
-        print()
-
-    for question, answer in questions_and_answers_2.items():
-        print(question)
-        print(answer)
-        print("Resposta 2:",
-              resposta_2
-              ["resposta_2"]
-              ["unique_numbers_function"]
-              )
-        print()
-
-    for question, answer in questions_and_answers_3.items():
-        print(question)
-        print(answer)
-        print("Resposta 3:",
-              resposta_3
-              ["resposta_3"]
-              ["elements_in_one_list_only_function"]
-              )
-        print()
-
-    for question, answer in questions_and_answers_4.items():
-        print(question)
-        print(answer)
-        print("Resposta 4:",
-              resposta_4
-              ["resposta_4"]
-              ["segundo_maior_valor_function"]
-              )
-        print()
-
-    for question, answer in questions_and_answers_5.items():
-        print(question)
-        print(answer)
-        print("Resposta 5:",
-              resposta_5
-              ["resposta_5"]
-              ["ordenar_por_nome_function"]
-              )
-        print()
-
-
-# Chamada da função para exibir perguntas e respostas
-
-display_questions_and_answers()
+print("\nVisualização de Dados:")
+visualizacao_dados.questao_6()
+visualizacao_dados.questao_7()
