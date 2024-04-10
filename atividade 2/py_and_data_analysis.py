@@ -4,7 +4,9 @@ import pandas as pd
 class QuestoesBasicas:
     # Inicializa a lista de números
     def __init__(self):
-        self.numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        self.numeros = []
+        for i in range(1, 21):
+            self.numeros.append(i)
 
     # QUESTÃO 1
     def questao_1(self):
@@ -29,8 +31,12 @@ class QuestoesBasicas:
 
     # QUESTÃO 3
     def questao_3(self):
-        return list(set(self.numeros) ^ set([2, 5, 6, 9, 10]))
-
+        return list(
+            set(self.numeros) ^ set(
+                [4, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
+            )
+        )  # Lista de números não fibonacci
+    
     # QUESTÃO 4
     def questao_4(self):
         # Verifica se a lista tem pelo menos dois elementos
@@ -55,7 +61,20 @@ class QuestoesBasicas:
 
     # QUESTÃO 5
     def questao_5(self):
-        return sorted([("João", 20), ("Maria", 30), ("Ana", 25), ("Pedro", 27)])
+        return sorted(
+            [
+                ("João", 20),
+                ("Maria", 30),
+                ("Ana", 25),
+                ("Pedro", 27),
+                ("Carlos", 18),
+                ("Mariana", 35),
+                ("Paulo", 22),
+                ("Luísa", 29),
+                ("Fernando", 40),
+                ("Marta", 33),
+            ]
+        )
 
 
 class VisualizacaoDados:
@@ -108,13 +127,18 @@ questoes_basicas = QuestoesBasicas()
 visualizacao_dados = VisualizacaoDados()
 
 print("Questões Básicas:")
+print("\nQuestão 1:")
 print(questoes_basicas.questao_1())
+print("\nQuestão 2:")
 print(questoes_basicas.questao_2())
+print("\nQuestão 3:")
 print(questoes_basicas.questao_3())
+print("\nQuestão 4:")
 print(questoes_basicas.questao_4())
+print("\nQuestão 5:")
 print(questoes_basicas.questao_5())
 
-print("\nVisualização de Dados:")
+print("\nVisualização de Dados aberto em Janela:")
 visualizacao_dados.questao_6()
 visualizacao_dados.questao_7()
 
