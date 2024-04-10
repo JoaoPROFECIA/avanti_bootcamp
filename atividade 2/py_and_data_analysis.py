@@ -1,6 +1,5 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
+
 
 class QuestoesBasicas:
     # Inicializa a lista de números
@@ -27,7 +26,7 @@ class QuestoesBasicas:
             if number % i == 0:
                 return False
         return True
-    
+
     # QUESTÃO 3
     def questao_3(self):
         return list(set(self.numeros) ^ set([2, 5, 6, 9, 10]))
@@ -103,6 +102,7 @@ class VisualizacaoDados:
         df.fillna(0, inplace=True)
         print(df)
 
+
 # Teste das questões
 questoes_basicas = QuestoesBasicas()
 visualizacao_dados = VisualizacaoDados()
@@ -117,3 +117,5 @@ print(questoes_basicas.questao_5())
 print("\nVisualização de Dados:")
 visualizacao_dados.questao_6()
 visualizacao_dados.questao_7()
+
+# Não é possível testar as questões 8, 9 e 10 sem o arquivo csv
